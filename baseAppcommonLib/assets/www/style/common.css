@@ -1,0 +1,112 @@
+input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance:none; }
+html,body,div,header,footer,nav,section,table,tr,th,td,ul,ol,li,dl,dt,dd,em,i,b,p,s,h1,h2,h3,h4,h5,h6,pre,img,form,fieldset,legend,input,textarea,select,span,button{
+	margin:0; 
+	padding:0; 
+	font-weight:normal; 
+	box-sizing: border-box;
+	}
+html, body {
+  -webkit-user-select: none; /*css3属性，文本不能被选择*/
+  user-select: none;
+  overflow-x: hidden;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;/*css3文本大小不会根据设备尺寸进行调整*/
+  /*font-size: 625%;/!*根元素100px*!/*/
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #FFF;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+body, input, button, textarea {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  border: none;
+  outline: none;
+}
+
+a, img {
+  -webkit-touch-callout: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /*-webkit-user-modify: read-write-plaintext-only;*/
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after{
+	content:""; 
+	display:table;
+}
+.clearfix:after{
+	clear:both;
+}
+.clearfix{
+	_zoom:1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+body{ background:#f1f1f1; }
+
+/* 公用样式 */
+.pjoTitle{ text-align:center; padding-top:0.85rem;  background:white; border-bottom:1px solid #d7d7d7; }
+.pjoTitle>img{ width:0.3rem; margin-top:0.4rem; margin-left:0.53rem; float:left; }
+.pjoTitle>span{ display:inline-block; padding:0.32rem 0; font-size:0.42rem; }
+
+.shade{/*遮罩层*/
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,0.5);
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+.blackTips{/*黑色提示弹框*/
+	padding: 0 0.266666rem;
+	height: 0.866666rem;
+	font-size: 0.373333rem;
+	color: white;
+	text-align: center;
+	line-height: 0.866666rem;
+	border-radius: 0.08rem;
+	position: fixed;
+	left: 50%;
+	margin-left: -1.066666rem;
+	top: 50%;
+	margin-top: -0.433333rem;
+	background: rgba(0,0,0,0.7);
+}
+
+
+

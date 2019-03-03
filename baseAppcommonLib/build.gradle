@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api files('libs/cordova.jar')
+    api files('libs/libammsdk.jar')
+    api files('libs/AMap_Location_V3.6.1_20171012.jar')
+    api files('libs/AMap_Search_V5.3.1_20170817.jar')
+    api files('libs/Android_Map3D_SDK_V5.4.0_20170928.jar')
+    api project(':mvpBaseLib')
+    api project(':ModuleLib:pickerview')
+}

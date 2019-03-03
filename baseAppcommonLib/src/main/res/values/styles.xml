@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="pop_add">
+        <item name="android:windowEnterAnimation">@anim/pop_add_show</item>
+        <item name="android:windowExitAnimation">@anim/pop_add_hide</item>
+    </style>
+
+
+    <style name="operation_popwindow_anim_style_up" >
+        <item name="android:windowEnterAnimation">@anim/popshow_operation_anim_up</item>
+        <item name="android:windowExitAnimation">@anim/popshow_operation_anim_up_exit</item>
+    </style>
+    <style name="operation_popwindow_anim_style_down" >
+        <item name="android:windowEnterAnimation">@anim/popshow_operation_anim_down</item>
+        <item name="android:windowExitAnimation">@anim/popshow_operation_anim_down_exit</item>
+    </style>
+
+</resources>

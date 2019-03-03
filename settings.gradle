@@ -1,0 +1,2 @@
+include ':odpApp', ':mvpBaseLib', ':commonutilLib', ':baseAppcommonLib', ':resLib', 'ModuleLib:network-rx-retrofit', 'ModuleLib:RVHelper',
+        'ModuleLib:pickerview','ModuleLib:FlycoTabLayout_Lib'

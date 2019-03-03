@@ -1,0 +1,223 @@
+<!doctype html>
+<html><head>
+	<style type='text/css'>
+		html { font-family:Helvetica; color:#222; }
+		h1 { color:steelblue; font-size:24px; margin-top:24px; }
+		button { margin:0 3px 10px; font-size:12px; }
+		.logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+	</style>
+
+</head><body >
+	<h1>本地 Demo</h1>
+	<script type="text/javascript" src="www/js/cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="www/js/qiduvdaolink.js"></script>
+	<script>
+		var deleteUserAccountByIdClick=function(){
+			//删除单个账号
+			var obj={"user_id":"435654675765756875"}
+			deleteUserAccountById();
+		}
+
+		var takeLocalUserListClick=function(){
+			//获取账号列表
+			var callbackSuccess=function(userArray){
+
+			}
+			takeLocalUserList(callbackSuccess);
+		}
+		//清除缓存
+		var clearWebViewCacheClick=function(){
+			clearWebViewCache();
+		}
+		//版本更新检测checkAppVersion
+
+		//复制
+		var copy2clipboardClick=function(){
+			var obj={"content":"435654675765756875"}
+			copy2clipboard(obj);
+		}
+
+		//输入价格
+		var showInputDialogForProductPriceClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			showInputDialogForProductPrice(callbackSuccess);
+		}
+
+
+		//选择退货原因
+		var showWheelViewReasonListClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			//title 标题,list 原因动态列表
+			var obj={"title":"请选择取消订单原因","list":["原因1","原因2","原因3","原因4","原因5"]}
+			showWheelViewReasonList(callbackSuccess,obj);
+		}
+
+		var credentialsUploadClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			//营业执照上传 1,身份证 2
+			var obj={"uploadClickType":2,"identity_positive_url":"upload/join/20180102092432591.jpg","identity_native_url":"upload/join/20180102092432591.jpg"}
+			credentialsUpload(callbackSuccess,obj);
+		}
+		var businessLicenceTermOfValidityClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			businessLicenceTermOfValidity(callbackSuccess);
+		}
+
+
+		//二维码扫描
+		var qrCodeScanClick=function(){
+			////0二维码条形码均支持,1 二维码,2 条形码
+			var obj={"qrCodeType":2}
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			qrCodeScan(callbackSuccess,obj);
+		}
+
+		var franchiseesCustomerAcreageFloorClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			//人流量 1,面积 2,楼层 3
+			var obj={"clickType":1,"customer":"500以下","acreage":"","floor":""}
+			franchiseesCustomerAcreageFloor(callbackSuccess,obj);
+		}
+
+
+		var showTimePickerClick=function(){
+			var callbackSuccess=function(json){
+				alert(json);
+			}
+			showTimePicker(callbackSuccess);
+		}
+		//定位当前店铺
+
+		var openStoreLocationClick=function(){
+			var json={"latitude":22.3378,"longitude":113.4541}
+			openStoreLocation(json);
+		}
+		//获取当前定位信息
+		var locationCurrentPositionClick=function(){
+			var callbackSuccess=function(error){
+				//alert(error);
+			}
+			var callbackError=function(response){
+				//alert(response);
+			}
+			locationCurrentPosition(callbackSuccess,callbackError);
+
+		}
+
+		var wxAuthorizationLoginClick=function(){
+			var callbackSuccess=function(response){
+				//alert(response);
+			}
+			wxAuthorizationLogin(callbackSuccess);
+		}
+
+		var finishCurrentActivityclick=function(){
+			finishCurrentActivity();
+		}
+		var webGoBackPagePressClick=function(){
+			webGoBackPagePress();
+		}
+		var getPhoneInputEdit=function(){
+			var callbackSuccess=function(phoneNumber){
+				//获得手机号码phoneNumber之后进行你的操作
+				alert(phoneNumber);
+			}
+			showPhoneInputEdit(callbackSuccess);
+		}
+		var openStore=function(){
+			//var url="http://new.7dugo.com/index";
+			//var json={"url":"http://new.7dugo.com/index"}
+			//openNewWindow(json);
+			//getPhoneInputEdit();
+			var txt="this is a test";
+			openNearStoreList();
+		}
+
+		var shareWx=function(){
+			//whatTypeShare 分享到什么平台例如微信wx,qq,sina.    whoToShare 分享到哪里 例如微信分享给朋友talk 分享到朋友圈 friends  shareType 分享内容类型 text,pic,url
+            //shareContent 可以是图片地址 链接地址 文本内容
+			var json={"whatTypeShare":"wx","whoToShare":"talk","shareType":"url","shareContent":"http://www.baidu.com","title":"分享标题","content":"描述内容"}
+			shareToThirdApp(json);
+		}
+		loginSuccessTest=function(){
+			var json={"user_id":"http://new.7dugo.com/index","user_name":"lilililiilili"}
+			loginSuccess(json);
+		}
+
+		var openCamera=function(){
+
+			var callbackSuccess=function(url){
+	            alert(url);
+	          }
+			openCameraTokePhoto(callbackSuccess);
+		}
+
+		var openPhoto=function(){
+			var callbackSuccess=function(url){
+	            alert(url);
+	        }
+			openPhotoTokePhoto(callbackSuccess);
+		}
+
+		var inputAddress=function(){
+			var obj={"isAddressUseForHomePage":false}
+			var callbackSuccess=function(address){
+	            alert(address);
+	        }
+			addressLocation(callbackSuccess,obj);
+		}
+
+		function java_call(str){
+			alert('android 调用js方法'+str);
+		}
+
+		//var callbackSuccess=function (deviceId){
+			//deviceId就是设备id
+		//}
+		//getGenerateDeviceUniqueId(callbackSuccess);
+
+
+
+	</script>
+	<div onclick="openStore();">js点击打开附件门店</div>
+	<div onclick="shareWx();">js调用微信分享</div>
+	<div onclick="loginSuccessTest();">js调用登录</div>
+	<div onclick="openCamera();">js调用拍照</div>
+	<div onclick="openPhoto();">js调用相册</div>
+
+	<div onclick="inputAddress();">js调用地址选择</div>
+
+	<div onclick="wxAuthorizationLoginClick();">js调用微信登录</div>
+
+	<div onclick="openStoreLocationClick();">js打开店铺地图</div>
+
+	<div onclick="showTimePickerClick();">js调用时间选择</div>
+
+	<div onclick="franchiseesCustomerAcreageFloorClick();">js调用加盟</div>
+
+	<div onclick="qrCodeScanClick();">js调用二维码条形码扫描</div>
+
+	<div onclick="businessLicenceTermOfValidityClick();">选择营业执照有效期</div>
+
+	<div onclick="credentialsUploadClick();">选择营业执照/身份证上传</div>
+
+	<div onclick="showWheelViewReasonListClick();">选择取消订单原因</div>
+
+	<div onclick="showInputDialogForProductPriceClick();">输入价格</div>
+
+
+
+	<h1 ><a href="http://wofei_wap.7dugo.com/oauth2_authorize.html?response_type=code&client_id=7dugo&state=xyz">OAauth2.0测试</a></h1>
+</body></html>

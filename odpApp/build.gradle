@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+
+/*def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}*/
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId "app.odp.qidu"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //配置glide添加支持
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    signingConfigs {
+        //签名密码写在gradle中不安全，故最好在打包上线的时候将相关代码注释掉。
+        debug {
+            // No debug config
+            try {
+                storeFile file("./keystore/debug.jks")
+                storePassword "android"
+                keyAlias "alias"
+                keyPassword "android"
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+        release {
+            try {
+                storeFile file("./keystore/release.jks")
+                storePassword "android"
+                keyAlias "alias"
+                keyPassword "android"
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            debuggable true
+            versionNameSuffix "-debug"
+            //shrinkResources false
+            minifyEnabled false
+            zipAlignEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            //shrinkResources true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            /*applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+                        def fileName = "appName_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }*/
+
+        }
+    }
+
+    // 友盟多渠道打包 http://blog.csdn.net/mynameishuangshuai/article/details/51783303
+    /*productFlavors {
+        wandoujia {}
+        tencent {}
+        taobao {}
+        huawei {}
+        xiaomi {}
+        wandoujia {}
+        baidu {}
+        yingyongbao {}
+        android360 {}
+        uc {}
+        umeng {}
+        meizu{}
+        //批量配置
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }*/
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'junit:junit:4.12'
+    //添加友盟依赖
+    //compile 'com.umeng.analytics:analytics:latest.integration'
+
+    api project(':baseAppcommonLib')
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    api project(':ModuleLib:FlycoTabLayout_Lib')
+}

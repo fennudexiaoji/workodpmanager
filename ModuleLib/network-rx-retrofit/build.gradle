@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Rx的包
+//RxAndroid
+    api deps.rxandroid
+    //RxJava
+    api deps.rxjava
+    //retrofit2
+    api deps.retrofit
+    api deps.converterGson
+    api deps.adapterRxjava
+
+    api deps.googlegson
+
+    //ConverterFactory的String依赖包
+    api 'com.squareup.retrofit2:converter-scalars:2.1.0'
+
+    compile deps.loggingInterceptor
+
+    api deps.supportV4
+}
